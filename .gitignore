@@ -1,0 +1,10 @@
+models/
+runs/
+custom_models/
+datasets/
+local/
+test*
+*.pt
+*.mp4
+*.jpg
+*.png
