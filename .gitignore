@@ -4,6 +4,7 @@ custom_models/
 datasets/
 local/
 test*
+tmp*
 *.pt
 *.mp4
 *.jpg
