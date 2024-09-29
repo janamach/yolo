@@ -1,4 +1,5 @@
 # Go through each txt file in the folder, load as tsv and remove the last two columns
+# To remove one column, use df = df.iloc[:, :-1] on line 18.
 
 import os
 import pandas as pd

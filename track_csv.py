@@ -35,8 +35,8 @@ with open(csv_fname, 'w', newline='') as file:
     print(f"CSV file created: {csv_fname}")
 
     # Process video and track frame by frame
-    for frame_idx, result in enumerate(model.track(source=input_video,imgsz=imgsz,
-                                                   show=False,save=True,line_width=3,
+    for frame_idx, result in enumerate(model.track(source=input_video,imgsz=imgsz,stream=True, save_json=True,
+                                                   show=False,save=True,line_width=3, tracker="model_birds/birds.yaml",
                                                    project=save_path, name=video_name, exist_ok=True)):
         for det in result.boxes.data.tolist():  # Adjust this line based on the actual structure of the result
             x1, y1, x2, y2, track_id, conf, cls = det  # Corrected order

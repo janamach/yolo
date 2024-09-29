@@ -1,0 +1,9 @@
+bird
+white
+grass
+seeds
+water
+water_tank
+stones
+sand
+seed_tank

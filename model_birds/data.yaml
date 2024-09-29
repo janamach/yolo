@@ -1,0 +1,13 @@
+train: dataset20240909-25/train
+val: dataset20240909-25/validate
+
+names:
+  0: bird
+  1: white
+  2: grass
+  3: seeds
+  4: water
+  5: water_tank
+  6: stones
+  7: sand
+  8: seed_tank
