@@ -4,6 +4,10 @@ Download YOLO moveld from here: [YOLO Models](https://docs.ultralytics.com/model
 
 ## Bash commands:
 
+Run a python script in a bash for loop:
+
+    for file in data/*.csv; do python3 script.py $file; done
+
 Extract 1 frame per second from a video, and save 10 frames:
     
     input_video=1.mp4
