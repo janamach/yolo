@@ -4,6 +4,14 @@ Download YOLO moveld from here: [YOLO Models](https://docs.ultralytics.com/model
 
 ## Bash commands:
 
+Concatinate images horizontally:
+
+    convert +append 1.jpg 2.jpg 3.jpg out.jpg
+
+Concatinate images vertically:
+    
+    convert -append 1.jpg 2.jpg 3.jpg out.jpg
+
 Run a python script in a bash for loop:
 
     for file in data/*.csv; do python3 script.py $file; done
