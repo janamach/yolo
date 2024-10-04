@@ -1,11 +1,12 @@
-# This script is used to batch process videos with the YOLO tracker and save the results to a project directory,
+# This script is used to batch process videos with the YOLOv8 and save the results to a project directory,
 # as well as convert the raw avi file into to resized and compressed mp4 format.
-# Requirements: Python 3.9 (test), ffmpeg, YOLO model file and all dependencies.
+# Requirements: Python 3.9 (tested), ffmpeg, YOLO model file and all dependencies.
 
-VID_PATH=~/Videos/file*.mp4
-export YOLO_MODEL_PATH=models/8small1280.pt
-export IMGSZ=600
-export SAVE_PROJECT_PATH=~/Videos/tracked/8small1280
+VID_PATH=/path/to/videos*/*.mp4
+
+export YOLO_MODEL_PATH=model_birds/birds.pt
+export IMGSZ=2304
+export SAVE_PROJECT_PATH=/save/path/project_name
 
 # Ask the user if they want to continue if the project directory already exists
 if [ -d "$SAVE_PROJECT_PATH" ]; then
@@ -38,7 +39,9 @@ for i in $VID_PATH
         printf "Raw avi path: $RAW_AVI_PATH\n"
         python track_csv.py
         echo "Done with $i, converting to mp4" &
-        ffmpeg -y -i $RAW_AVI_PATH -c:v h264_nvenc -filter:v scale=1280:-1 -cq 45 $SAVE_PROJECT_PATH/$(basename $i .mp4)_detections.mp4 &  
+        # Compress and scale down the raw avi file to mp4 for future reference
+        ffmpeg -y -i $RAW_AVI_PATH -c:v h264_nvenc -filter:v scale=1280:-1 -cq 45 $SAVE_PROJECT_PATH/$(basename $i .mp4)_detections.mp4
+        rm $RAW_AVI_PATH # Remove the huge avi file
     done
 
 echo "Done tracking all videos. When the ffmpeg process is done, avi files will be safe to delete."
