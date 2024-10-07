@@ -1,4 +1,8 @@
-# Go through each txt file in the folder, load as tsv and remove the last two columns
+# Correct bad detections in the label files generated with YOLOv8 using labelImg.
+# To do this, some columns need to be removed from the label files, otherwise
+# labelImg will complain.
+
+# This script iterates through each txt file in the folder, load as tsv and remove the last two columns.
 # To remove one column, use df = df.iloc[:, :-1] on line 18.
 
 import os

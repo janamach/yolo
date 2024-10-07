@@ -1,5 +1,7 @@
 # This script goes through a folder and looks for filenames that exist in *txt and *jpg format.
-# It then moves these files to "labels" and "images" folders respectively.
+# It then moves these files to "labels" and "images" folders respectively, while ignoring
+# images that do not have a corresponding label file.
+# This is usful when generating a clean dataset for training a YOLO model.
 
 new_dir_name="combined_dataset"
 new_train_dir_name="combined_dataset/train"
