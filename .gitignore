@@ -9,4 +9,4 @@ tmp*
 *.mp4
 *.jpg
 *.png
-!model_birds/*
+model_birds/

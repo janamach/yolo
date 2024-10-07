@@ -1,29 +1,32 @@
-# yolo
+## Official links:
 
-Download YOLO moveld from here: [YOLO Models](https://docs.ultralytics.com/models/)
+Download YOLO models from here:
 
-## Bash commands:
+[YOLOv8 Models](https://docs.ultralytics.com/models/yolov8)
 
-Concatinate images horizontally:
+[All YOLO Models](https://docs.ultralytics.com/models/)
 
-    convert +append 1.jpg 2.jpg 3.jpg out.jpg
+## Labeling tools tested so far:
 
-Concatinate images vertically:
+### LabelImg
+
+Works well on Ubuntu 22.04 and 24.04 with Python 3.9. but was crashing with Python 3.11. 
+
+Install:
+
+    pip install labelImg
+
+Run:
     
-    convert -append 1.jpg 2.jpg 3.jpg out.jpg
+    labelImg <folder_with_images> <path_to_classes.txt> <label_save_path> 
 
-Run a python script in a bash for loop:
+E.g.:
 
-    for file in data/*.csv; do python3 script.py $file; done
+    labelImg data/labels data/classes.txt data/labels
 
-Extract 1 frame per second from a video, and save 10 frames:
-    
-    input_video=1.mp4
-    ffmpeg -i $input_video -vf fps=1 -frames:v 10 ${input_video}_%03d.jpg
+## Useful bash commands
 
-Extract all frames from a video:
-
-    ffmpeg -i 1s.mp4 %d.jpg
+### YOLOv8
 
 
 train:
@@ -47,3 +50,26 @@ export to tflite to use with Coral Edge TPU:
 
     yolo export model=models/yolov10s.pt format="edgetpu" imgsz=512
 
+
+### Quick image processing
+
+Concatinate images horizontally:
+
+    convert +append 1.jpg 2.jpg 3.jpg out.jpg
+
+Concatinate images vertically:
+    
+    convert -append 1.jpg 2.jpg 3.jpg out.jpg
+
+Run a python script in a bash for loop:
+
+    for file in data/*.csv; do python3 script.py $file; done
+
+Extract 1 frame per second from a video, and save 10 frames:
+    
+    input_video=1.mp4
+    ffmpeg -i $input_video -vf fps=1 -frames:v 10 ${input_video}_%03d.jpg
+
+Extract all frames from a video:
+
+    ffmpeg -i 1s.mp4 %d.jpg
