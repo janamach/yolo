@@ -1,4 +1,4 @@
-## Official links:
+## Official links
 
 Download YOLO models from here:
 
@@ -6,11 +6,11 @@ Download YOLO models from here:
 
 [All YOLO Models](https://docs.ultralytics.com/models/)
 
-## Labeling tools tested so far:
+## Labeling tools
 
 ### LabelImg
 
-Works well on Ubuntu 22.04 and 24.04 with Python 3.9. but was crashing with Python 3.11. 
+Works well on Ubuntu 22.04 and 24.04 with Python 3.9. but was crashing with Python 3.11. Good for creating bounding boxes for object detection and exporting to different formats, including YOLO.
 
 Install:
 
@@ -24,15 +24,26 @@ E.g.:
 
     labelImg data/labels data/classes.txt data/labels
 
+
+### Labelme
+
+Capable of creating polygonal masks for semantic segmentation. 
+
+Install:
+
+    sudo apt install labelme
+
+Did not test it yet. Had a lot of issues with installing python dependencies and setting up the paths.
+
 ## Useful bash commands
 
 ### YOLOv8
 
-
 train:
 
-    yolo train data=data.yaml model=models/yolov8m.pt epochs=1000 project="custom_models" name="8medium" batch=2
+    yolo train data=data.yaml model=models/yolov8n.pt epochs=100 imgsz=2304 project="custom_models" name="whatever" batch=2
 
+I use old GPUs, so batch size has to be adjusted depending on imgsz and model used.
 
 detect:
 
